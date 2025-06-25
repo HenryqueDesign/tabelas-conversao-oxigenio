@@ -170,5 +170,43 @@
     <img src="imagem/1.png" alt="white martins">
 <img src="imagem/2.png" alt="jsl">
 </div>
+
+<div class="calculadora" style="max-width:350px;margin:30px auto;text-align:center;">
+    <h2>Calculadora de Conversão</h2>
+
+    <label for="valor">Valor:</label>
+    <input type="number" id="valor" placeholder="Digite o valor">
+
+    <label for="fator">Fator de Conversão:</label>
+    <input type="number" id="fator" placeholder="Ex: 0.8765">
+
+    <label style="display:block;margin:10px 0;">
+        <input type="checkbox" id="modo" checked>
+        Multiplicar (desmarque para dividir)
+    </label>
+
+    <button onclick="calcular()">Converter</button>
+
+    <p id="resultado"></p>
+</div>
+
+<script>
+    function calcular() {
+        const valor = parseFloat(document.getElementById("valor").value);
+        const fator = parseFloat(document.getElementById("fator").value);
+        const modoMultiplicar = document.getElementById("modo").checked;
+
+        if (isNaN(valor) || isNaN(fator) || fator === 0) {
+            document.getElementById("resultado").innerText = "Por favor, insira valores válidos.";
+            return;
+        }
+
+        const resultado = modoMultiplicar ? valor * fator : valor / fator;
+        const operacao = modoMultiplicar ? "multiplicado" : "dividido";
+
+        document.getElementById("resultado").innerText = `Resultado (${operacao}): ${resultado.toFixed(4)}`;
+    }
+</script>
+
 </body>
 </html>
