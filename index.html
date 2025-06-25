@@ -189,8 +189,11 @@
 
 <script>
     function calcular() {
-        const valor = parseFloat(document.getElementById("valor").value);
-        const fator = parseFloat(document.getElementById("fator").value);
+        // Substitui vírgula por ponto para aceitar decimais no padrão brasileiro
+        const valorInput = document.getElementById("valor").value.replace(",", ".");
+        const fatorInput = document.getElementById("fator").value.replace(",", ".");
+        const valor = parseFloat(valorInput);
+        const fator = parseFloat(fatorInput);
         const modoMultiplicar = document.getElementById("modo").checked;
 
         if (isNaN(valor) || isNaN(fator) || fator === 0) {
