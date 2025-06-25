@@ -114,7 +114,7 @@
             
             <td colspan="3">m3  x  Fator do Produto
 
-            <br><span><i>Exemplo: 1,730 m3 x 0,754 = (1,304) kg <br> 1,304 kg <span id="dividir">&#247;</span> 0,754 = (1,730) m3 </i></span></td>
+            <br><span><i>Exemplo: 1.730 m3 x 0.754 = (1.304) kg <br> 1.304 kg <span id="dividir">&#247;</span> 0.754 = (1.730) m3 </i></span></td>
         </tr>
     </tfoot>        
 </table>
@@ -163,7 +163,7 @@
     </tbody>
     <tfoot>
         <tr>
-            <td colspan="3">Fator Tanque x Polegadas Descarga<br><span><i>Exemplo: 125 pol x 13,8400 = (1,730) m3<br> 1,730 m3 <span id="dividir">&#247;</span> 13,8400 = (125) pol</i></span></td>
+            <td colspan="3">Fator Tanque x Polegadas Descarga<br><span><i>Exemplo: 125 pol x 13,8400 = (1.730) m3<br> 1.730 m3 <span id="dividir">&#247;</span> 13,8400 = (125) pol</i></span></td>
         </tr>
     </tfoot>
 </table>
@@ -171,16 +171,16 @@
 <div class="calculadora">
     <h2>Calculadora de Conversão</h2>
 
-    <label for="valor">Maior:</label>
+    <label for="valor">maior:</label>
     <input type="number" id="valor" placeholder="Ex: 125" style="margin-bottom:8px;">
 
-    <label for="fator">Menor:</label>
+    <label for="fator">menor:</label>
     <input type="number" id="fator" placeholder="Ex: 13,8400" style="margin-bottom:8px;">
 
     <label style="display:block;margin:10px 0;">
         <input type="checkbox" id="modo" checked>
-        Multiplicar (desmarque para dividir) <br>
-        <span><i>Exemplo: 13,8400 x 125 pol = (1,730) m3<br> 1,730 m3 <span id="dividir">&#247;</span> 13,8400 = (125) pol</i></span>
+        Multiplicar (Desmarque para dividir) <br>
+        <span><i>Exemplo: 13,8400 x 125 pol = (1.730) m3<br> 1.730 m3 <span id="dividir">&#247;</span> 13,8400 = (125) pol</i></span>
     </label>
 
     <button onclick="calcular()" style="margin-bottom:10px;">Converter</button>
@@ -235,7 +235,7 @@ function calcular() {
     }
 
     const resultado = modoMultiplicar ? valor * fator : valor / fator;
-    const operacao = modoMultiplicar ? "multiplicado" : "dividido";
+    const operacao = modoMultiplicar ? "Multiplicado" : "Dividido";
 
     const resultadoFormatado = resultado.toLocaleString('pt-BR', {
         minimumFractionDigits: 0,
