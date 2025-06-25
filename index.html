@@ -179,7 +179,8 @@
 
     <label style="display:block;margin:10px 0;">
         <input type="checkbox" id="modo" checked>
-        Multiplicar (desmarque para dividir) <br> <span><i>Exemplo: 13,8400 x 125 pol = (1,730) m3<br> 1,730 m3 <span id="dividir">&#247;</span> 13,8400 = (125) pol</i></span>
+        Multiplicar (desmarque para dividir) <br>
+        <span><i>Exemplo: 13,8400 x 125 pol = (1,730) m3<br> 1,730 m3 <span id="dividir">&#247;</span> 13,8400 = (125) pol</i></span>
     </label>
 
     <button onclick="calcular()" style="margin-bottom:10px;">Converter</button>
@@ -221,39 +222,40 @@
 </style>
 
 <script>
-    function calcular() {
-        // Substitui vírgula por ponto para aceitar decimais no padrão brasileiro
-        const valorInput = document.getElementById("valor").value.replace(",", ".");
-        const fatorInput = document.getElementById("fator").value.replace(",", ".");
-        const valor = parseFloat(valorInput);
-        const fator = parseFloat(fatorInput);
-        const modoMultiplicar = document.getElementById("modo").checked;
+function calcular() {
+    const valorInput = document.getElementById("valor").value.replace(",", ".");
+    const fatorInput = document.getElementById("fator").value.replace(",", ".");
+    const valor = parseFloat(valorInput);
+    const fator = parseFloat(fatorInput);
+    const modoMultiplicar = document.getElementById("modo").checked;
 
-        if (isNaN(valor) || isNaN(fator) || fator === 0) {
-            document.getElementById("resultado").innerText = "Por favor, insira valores válidos.";
-            return;
-        }
-
-        const resultado = modoMultiplicar ? valor * fator : valor / fator;
-        const operacao = modoMultiplicar ? "multiplicado" : "dividido";
-
-        // Remove zeros desnecessários após a vírgula
-        const resultadoFormatado = resultado % 1 === 0 ? resultado.toString() : resultado.toFixed(4).replace(/\.?0+$/, "");
-        document.getElementById("resultado").innerText = `Resultado (${operacao}): ${resultadoFormatado}`;
+    if (isNaN(valor) || isNaN(fator) || fator === 0) {
+        document.getElementById("resultado").innerText = "Por favor, insira valores válidos.";
+        return;
     }
 
-    // Permite calcular pressionando Enter/Ir nos campos de input
-    document.addEventListener('DOMContentLoaded', function() {
-        const valor = document.getElementById("valor");
-        const fator = document.getElementById("fator");
-        [valor, fator].forEach(function(input) {
-            input.addEventListener("keydown", function(e) {
-                if (e.key === "Enter") {
-                    calcular();
-                }
-            });
+    const resultado = modoMultiplicar ? valor * fator : valor / fator;
+    const operacao = modoMultiplicar ? "multiplicado" : "dividido";
+
+    const resultadoFormatado = resultado.toLocaleString('pt-BR', {
+        minimumFractionDigits: 0,
+        maximumFractionDigits: 4
+    });
+
+    document.getElementById("resultado").innerText = `Resultado (${operacao}): ${resultadoFormatado}`;
+}
+
+document.addEventListener('DOMContentLoaded', function () {
+    const valor = document.getElementById("valor");
+    const fator = document.getElementById("fator");
+    [valor, fator].forEach(function (input) {
+        input.addEventListener("keydown", function (e) {
+            if (e.key === "Enter") {
+                calcular();
+            }
         });
     });
+});
 </script>
 
 <div style="text-align: center;">
