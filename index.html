@@ -169,14 +169,17 @@
 </table>
 
 <div class="calculadora" style="max-width:350px;margin:30px auto;text-align:center;display:flex;flex-direction:column;align-items:center;">
-    <h2>Conversão pol³ ↔ m³</h2>
+    <h2>Calculadora de Conversão</h2>
 
-    <label for="valor">Valor:</label>
-    <input type="number" id="valor" placeholder="Ex: 125" style="margin-bottom:8px;">
+    <label for="valor">Maior:</label>
+    <input type="number" id="valor" placeholder="Ex: 13,8400" style="margin-bottom:8px;">
+
+    <label for="fator">Menor:</label>
+    <input type="number" id="fator" placeholder="Ex: 125" style="margin-bottom:8px;">
 
     <label style="display:block;margin:10px 0;">
         <input type="checkbox" id="modo" checked>
-        Pol³ → m³ (desmarque para m³ → pol³)
+        Multiplicar (desmarque para dividir) <br> <span><i>Exemplo: 13,8400 x 125 pol = (1,730) m3<br> 1,730 m3 <span id="dividir">&#247;</span> 13,8400 = (125) pol</i></span>
     </label>
 
     <button onclick="calcular()" style="margin-bottom:10px;">Converter</button>
@@ -186,23 +189,22 @@
 
 <script>
     function calcular() {
+        // Substitui vírgula por ponto para aceitar decimais no padrão brasileiro
         const valorInput = document.getElementById("valor").value.replace(",", ".");
+        const fatorInput = document.getElementById("fator").value.replace(",", ".");
         const valor = parseFloat(valorInput);
-        const modoPolParaM3 = document.getElementById("modo").checked;
+        const fator = parseFloat(fatorInput);
+        const modoMultiplicar = document.getElementById("modo").checked;
 
-        // Fatores fixos:
-        const fatorPolParaM3 = 0.0000163871;
-        const fatorM3ParaPol = 61023.7441;
-
-        if (isNaN(valor) || valor === 0) {
-            document.getElementById("resultado").innerText = "Por favor, insira um valor válido.";
+        if (isNaN(valor) || isNaN(fator) || fator === 0) {
+            document.getElementById("resultado").innerText = "Por favor, insira valores válidos.";
             return;
         }
 
-        const resultado = modoPolParaM3 ? valor * fatorPolParaM3 : valor * fatorM3ParaPol;
-        const unidade = modoPolParaM3 ? "m³" : "pol³";
+        const resultado = modoMultiplicar ? valor * fator : valor / fator;
+        const operacao = modoMultiplicar ? "multiplicado" : "dividido";
 
-        document.getElementById("resultado").innerText = `Resultado: ${resultado.toFixed(6)} ${unidade}`;
+        document.getElementById("resultado").innerText = `Resultado (${operacao}): ${resultado.toFixed(4)}`;
     }
 </script>
 
