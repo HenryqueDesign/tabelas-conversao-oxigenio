@@ -168,7 +168,7 @@
     </tfoot>
 </table>
 
-<div class="calculadora" style="max-width:350px;margin:30px auto;text-align:center;display:flex;flex-direction:column;align-items:center;">
+<div class="calculadora">
     <h2>Calculadora de Conversão</h2>
 
     <label for="valor">Maior:</label>
@@ -186,6 +186,21 @@
 
     <p id="resultado"></p>
 </div>
+
+<style>
+.calculadora {
+    max-width: 350px;
+    margin: 30px auto;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background: #fff;
+    border-radius: 12px;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.08);
+    padding: 24px 18px 18px 18px;
+}
+</style>
 
 <script>
     function calcular() {
@@ -214,5 +229,24 @@
     <img src="imagem/1.png" alt="white martins">
 <img src="imagem/2.png" alt="jsl">
 </div>
+<footer>
+    <style>
+        footer {
+            padding: 10px;
+            text-align: center;
+            margin-top: 20px;
+        }
+        .footer-link {
+            color: #361414;
+            text-decoration: none;
+        }
+        .footer-link:hover {
+            text-decoration: underline;
+        }
+    </style>
+    <p style="text-align: center; font-size: 0.8em; color: #666;">
+        Desenvolvido por <a href="https://www.instagram.com/henryque.design/" target="_blank" class="footer-link">Henryque Design</a>
+    </p>
+</footer>
 </body>
 </html>
