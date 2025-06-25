@@ -200,6 +200,24 @@
     box-shadow: 10px 8px 12px rgba(0,0,0,0.08);
     padding: 24px 18px 18px 18px;
 }
+@media (max-width: 600px) {
+    body {
+        border-radius: 0;
+        padding: 0;
+    }
+    table {
+        width: 98%;
+        font-size: 0.95em;
+    }
+    .calculadora {
+        max-width: 98vw;
+        padding: 14px 4vw 14px 4vw;
+        margin: 18px auto;
+    }
+    img {
+        width: 90px;
+    }
+}
 </style>
 
 <script>
@@ -223,6 +241,19 @@
         const resultadoFormatado = resultado % 1 === 0 ? resultado.toString() : resultado.toFixed(4).replace(/\.?0+$/, "");
         document.getElementById("resultado").innerText = `Resultado (${operacao}): ${resultadoFormatado}`;
     }
+
+    // Permite calcular pressionando Enter/Ir nos campos de input
+    document.addEventListener('DOMContentLoaded', function() {
+        const valor = document.getElementById("valor");
+        const fator = document.getElementById("fator");
+        [valor, fator].forEach(function(input) {
+            input.addEventListener("keydown", function(e) {
+                if (e.key === "Enter") {
+                    calcular();
+                }
+            });
+        });
+    });
 </script>
 
 <div style="text-align: center;">
