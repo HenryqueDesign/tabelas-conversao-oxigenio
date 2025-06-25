@@ -79,13 +79,50 @@
             background-color: #e6e6e6;
         }
         img {
-            width: 150px;
+            width: 200px;
             text-align: center;
             margin: 0px;
         }
        
-
-    
+.calculadora {
+    max-width: 300px;
+    margin: 30px auto;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background: #f09696;
+    border-radius: 12px;
+    box-shadow: 10px 8px 12px rgba(0,0,0,0.08);
+    padding: 24px 18px 18px 18px;
+}
+@media (max-width: 350px) {
+    body {
+        border-radius: 0;
+        padding: 0;
+    }
+    table {
+        width: 98%;
+        font-size: 0.95em;
+    }
+    .calculadora {
+        max-width: 98vw;
+        padding: 14px 4vw 14px 4vw;
+        margin: 18px auto;
+    }
+}
+     footer {
+            padding: 10px;
+            text-align: center;
+            margin-top: 20px;
+        }
+        .footer-link {
+            color: #361414;
+            text-decoration: none;
+        }
+        .footer-link:hover {
+            text-decoration: underline;
+        }
     </style>
 </head>
 <body>
@@ -188,39 +225,6 @@
     <p id="resultado"></p>
 </div>
 
-<style>
-.calculadora {
-    max-width: 300px;
-    margin: 30px auto;
-    text-align: center;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    background: #f09696;
-    border-radius: 12px;
-    box-shadow: 10px 8px 12px rgba(0,0,0,0.08);
-    padding: 24px 18px 18px 18px;
-}
-@media (max-width: 350px) {
-    body {
-        border-radius: 0;
-        padding: 0;
-    }
-    table {
-        width: 98%;
-        font-size: 0.95em;
-    }
-    .calculadora {
-        max-width: 98vw;
-        padding: 14px 4vw 14px 4vw;
-        margin: 18px auto;
-    }
-    img {
-        width: 250px;
-    }
-}
-</style>
-
 <script>
 function calcular() {
     const valorInput = document.getElementById("valor").value.replace(",", ".");
@@ -263,20 +267,6 @@ document.addEventListener('DOMContentLoaded', function () {
 <img src="imagem/2.png" alt="jsl">
 </div>
 <footer>
-    <style>
-        footer {
-            padding: 10px;
-            text-align: center;
-            margin-top: 20px;
-        }
-        .footer-link {
-            color: #361414;
-            text-decoration: none;
-        }
-        .footer-link:hover {
-            text-decoration: underline;
-        }
-    </style>
     <p style="text-align: center; font-size: 0.8em; color: #666;">
         Desenvolvido por <a href="https://www.instagram.com/henryque.design/" target="_blank" class="footer-link">Henryque Design</a>
     </p>
