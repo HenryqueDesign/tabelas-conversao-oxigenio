@@ -204,7 +204,9 @@
         const resultado = modoMultiplicar ? valor * fator : valor / fator;
         const operacao = modoMultiplicar ? "multiplicado" : "dividido";
 
-        document.getElementById("resultado").innerText = `Resultado (${operacao}): ${resultado.toFixed(4)}`;
+        // Remove zeros desnecessários após a vírgula
+        const resultadoFormatado = resultado % 1 === 0 ? resultado.toString() : resultado.toFixed(4).replace(/\.?0+$/, "");
+        document.getElementById("resultado").innerText = `Resultado (${operacao}): ${resultadoFormatado}`;
     }
 </script>
 
