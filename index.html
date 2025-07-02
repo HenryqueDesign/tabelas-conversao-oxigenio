@@ -5,170 +5,183 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Fator de Conversão</title>
     <style>
+        /* Define fonte padrão para todos os elementos */
         * {
-            font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
-            font-size: 0.99em;
+            font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif; /* Define a família de fontes */
+            font-size: 0.99em; /* Define o tamanho da fonte levemente menor que o padrão */
         }
+        /* Estiliza o corpo da página */
         body {
-            background-color: hsla(0, 94%, 48%, 0.31);
-            border: 2px solid #333;
-            padding: 0;
-            box-shadow: inset 0 0 20px rgba(0, 0, 0, 0.15);
-            border-radius: 15px;
+            background-color: hsla(0, 94%, 48%, 0.31); /* Cor de fundo com transparência */
+            border: 2px solid #333; /* Borda preta ao redor da página */
+            padding: 0; /* Remove o espaçamento interno */
+            box-shadow: inset 0 0 20px rgba(0, 0, 0, 0.15); /* Sombra interna suave */
+            border-radius: 15px; /* Cantos arredondados */
         }
+        /* Estiliza tabelas */
         table {
-            border-collapse: collapse;
-            width: 80%;
-            margin-bottom: 20px;
-            margin-left: auto;
-            margin-right: auto;
-            box-shadow: 0 0 30px rgba(0, 0, 0, 0.15);
-            
+            border-collapse: collapse; /* Remove espaçamento entre bordas das células */
+            width: 80%; /* Largura da tabela em relação ao container */
+            margin-bottom: 20px; /* Espaço abaixo da tabela */
+            margin-left: auto; /* Centraliza horizontalmente */
+            margin-right: auto; /* Centraliza horizontalmente */
+            box-shadow: 0 0 30px rgba(0, 0, 0, 0.15); /* Sombra externa suave */
         }
+        /* Bordas para tabela, th e td */
         table, th, td {
-            border: 1px solid black;
-              
-
+            border: 1px solid black; /* Borda preta fina em toda a tabela e células */
         }
+        /* Padding e alinhamento para células */
         th, td {
-            padding: 10px;
-            text-align: center;
-
+            padding: 10px; /* Espaçamento interno nas células */
+            text-align: center; /* Centraliza o texto */
         }
+        /* Fundo do cabeçalho */
         th {
-            background-color: #f2f2f2;
+            background-color: #f2f2f2; /* Cor de fundo cinza claro para cabeçalhos */
         }
+        /* Fundo das células */
         td {
-            background-color: #f9f9f9;
+            background-color: #f9f9f9; /* Cor de fundo quase branca para células */
         }
+        /* Fundo especial para células que ocupam 3 colunas */
         td[colspan="3"] {
-            background-color: #ddd7d7;
-            text-align: center;
-            font-weight: bold;
+            background-color: #ddd7d7; /* Fundo cinza claro para células que ocupam 3 colunas */
+            text-align: center; /* Centraliza o texto */
+            font-weight: bold; /* Deixa o texto em negrito */
         }
+        /* Linha de nomes em negrito e fundo */
         tr.NOMES {
-            background-color: #f2f2f2;
-            font-weight: bold;
+            background-color: #f2f2f2; /* Fundo cinza claro para linha de nomes */
+            font-weight: bold; /* Texto em negrito */
         }
+        /* Estilização do título */
         h1 {
-            font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
-            text-align: center;
-            color: #333;
-            margin-top: 0px;
-            box-shadow: none;
+            font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif; /* Fonte do título */
+            text-align: center; /* Centraliza o título */
+            color: #333; /* Cor do texto do título */
+            margin-top: 0px; /* Remove margem superior */
+            box-shadow: none; /* Remove sombra externa */
+            font-size: 1.5em; /* Tamanho maior para o título */
+            box-shadow: inset 0 0 20px rgba(0, 0, 0, 0.15); /* Sombra interna suave */
+            padding: 10px; /* Espaçamento interno */
         }
-        h1 {
-            font-size: 1.5em;
-            box-shadow: inset 0 0 20px rgba(0, 0, 0, 0.15);
-            padding: 10px;
-            text-align: center;
-        }
+        /* Estilização de spans */
         span {
-            font-size: 90%;
-            font-weight: normal;
+            font-size: 90%; /* Tamanho de fonte menor */
+            font-weight: normal; /* Peso normal */
         }
-
+        /* Ícone de divisão */
         #dividir {
-  font-size: 18px; /* Define o tamanho da fonte */
-  color: rgb(0, 0, 0); /* Define a cor do texto */
-}
+            font-size: 18px; /* Tamanho maior para o símbolo */
+            color: rgb(0, 0, 0); /* Cor preta */
+        }
+        /* Fundo para tabela 1 */
         .tab1 {
-            background-color: #f2f2f2;
+            background-color: #f2f2f2; /* Fundo cinza claro para tabela 1 */
         }
+        /* Fundo para tabela 2 */
         .tab2 {
-            background-color: #e6e6e6;
+            background-color: #e6e6e6; /* Fundo cinza um pouco mais escuro para tabela 2 */
         }
+        /* Estilização de imagens */
         img {
-            width: 180px;
-            text-align: center;
-            margin: 0px;
+            width: 180px; /* Largura fixa para imagens */
+            text-align: center; /* Centraliza imagem (não afeta img, mas pode afetar container) */
+            margin: 0px; /* Remove margens */
         }
-       
-.calculadora {
-    max-width: 300px;
-    margin: 30px auto;
-    text-align: center;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    background: #f09696;
-    border-radius: 12px;
-    box-shadow: 10px 8px 12px rgba(0,0,0,0.08);
-    padding: 24px 18px 18px 18px;
-}
-@media (max-width: 350px) {
-    body {
-        border-radius: 0;
-        padding: 0;
-    }
-    table {
-        width: 98%;
-        font-size: 0.95em;
-    }
-    .calculadora {
-        max-width: 98vw;
-        padding: 14px 4vw 14px 4vw;
-        margin: 18px auto;
-    }
-}
-     footer {
-            padding: 10px;
-            text-align: center;
-            margin-top: 20px;
+        /* Estilização da calculadora */
+        .calculadora {
+            max-width: 300px; /* Largura máxima da calculadora */
+            margin: 30px auto; /* Centraliza e adiciona espaço acima/abaixo */
+            text-align: center; /* Centraliza conteúdo */
+            display: flex; /* Usa flexbox para layout */
+            flex-direction: column; /* Organiza em coluna */
+            align-items: center; /* Centraliza itens horizontalmente */
+            background: #f09696; /* Fundo rosa claro */
+            border-radius: 12px; /* Cantos arredondados */
+            box-shadow: 10px 8px 12px rgba(0,0,0,0.08); /* Sombra externa */
+            padding: 24px 18px 18px 18px; /* Espaçamento interno */
         }
+        /* Responsividade para telas pequenas */
+        @media (max-width: 350px) {
+            body {
+                border-radius: 0; /* Remove cantos arredondados */
+                padding: 0; /* Remove padding */
+            }
+            table {
+                width: 98%; /* Tabela quase toda largura da tela */
+                font-size: 0.95em; /* Fonte um pouco menor */
+            }
+            .calculadora {
+                max-width: 98vw; /* Calculadora ocupa quase toda largura da tela */
+                padding: 14px 4vw 14px 4vw; /* Padding proporcional à tela */
+                margin: 18px auto; /* Espaço acima/abaixo e centraliza */
+            }
+        }
+        /* Estilização do rodapé */
+        footer {
+            padding: 10px; /* Espaçamento interno */
+            text-align: center; /* Centraliza texto */
+            margin-top: 20px; /* Espaço acima do rodapé */
+        }
+        /* Link do rodapé */
         .footer-link {
-            color: #361414;
-            text-decoration: none;
+            color: #361414; /* Cor do link */
+            text-decoration: none; /* Remove sublinhado */
         }
         .footer-link:hover {
-            text-decoration: underline;
+            text-decoration: underline; /* Sublinha ao passar o mouse */
         }
+        /* Botão da calculadora */
         .calculadora button {
-            width: 100%;
-            padding: 8px;
-            margin: 5px 0;
-            border: 1px solid #ccc;
-            border-radius: 4px;
+            width: 100%; /* Botão ocupa toda largura */
+            padding: 8px; /* Espaçamento interno */
+            margin: 5px 0; /* Espaço acima/abaixo */
+            border: 1px solid #ccc; /* Borda cinza clara */
+            border-radius: 4px; /* Cantos arredondados */
         }
+        /* Inputs da calculadora */
         .calculadora input {
-    
-            width: 100%;
-            box-sizing: border-box;
-            padding: 8px;
-            margin: 5px 0;
-            border: 1px solid #ccc;
-            border-radius: 4px;
+            width: 100%; /* Input ocupa toda largura */
+            box-sizing: border-box; /* Inclui borda e padding no tamanho */
+            padding: 8px; /* Espaçamento interno */
+            margin: 5px 0; /* Espaço acima/abaixo */
+            border: 1px solid #ccc; /* Borda cinza clara */
+            border-radius: 4px; /* Cantos arredondados */
         }
+        /* Labels da calculadora */
         .calculadora label {
-            display: block;
-            margin: 10px 0;
-            font-weight: bold;
+            display: block; /* Ocupa linha inteira */
+            margin: 10px 0; /* Espaço acima/abaixo */
+            font-weight: bold; /* Negrito */
         }
+        /* Parágrafo do resultado */
         .calculadora p {
-            margin-top: 10px;
-            font-size: 1.2em;
-            color: #333;
+            margin-top: 10px; /* Espaço acima */
+            font-size: 1.2em; /* Fonte maior */
+            color: #333; /* Cor do texto */
         }
+        /* Título da calculadora */
         .calculadora h2 {
-            margin-bottom: 20px;
-            color: #333;
+            margin-bottom: 20px; /* Espaço abaixo */
+            color: #333; /* Cor do texto */
         }
+        /* Resultado da calculadora */
         .calculadora #resultado {
-            margin: 1px;
-            font-size: 1.2em;
-            color: #484848;
+            margin: 1px; /* Pequeno espaço */
+            font-size: 1.2em; /* Fonte maior */
+            color: #484848; /* Cor do texto */
         }
-       
-        
-        
-        
     </style>
 </head>
 <body>
+<!-- Título principal da página -->
 <h1>FATOR DE CONVERSÃO</h1>
+
+<!-- Tabela de fatores de conversão dos produtos -->
 <table class="tab1">
     <thead>
-     
         <tr>
             <td colspan="3">FATOR DE CONVERSÃO DOS PRODUTOS</td>
         </tr>
@@ -187,14 +200,17 @@
     </tbody>
     <tfoot>
         <tr>
-            
-            <td colspan="3">m3  x  Fator do Produto
-
-            <br><span><i>Exemplo: 1.730 m3 x 0.754 = (1.304) kg <br> 1.304 kg <span id="dividir">&#247;</span> 0.754 = (1.730) m3 </i></span></td>
+            <td colspan="3">
+                <!-- Exemplo de uso dos fatores -->
+                m3  x  Fator do Produto
+                <br>
+                <span><i>Exemplo: 1.730 m3 x 0.754 = (1.304) kg <br> 1.304 kg <span id="dividir">&#247;</span> 0.754 = (1.730) m3 </i></span>
+            </td>
         </tr>
-    </tfoot>        
+    </tfoot>
 </table>
 
+<!-- Tabela de fator da pressão -->
 <table class="tab2">
     <thead>
         <tr>
@@ -215,10 +231,16 @@
     </tbody>
     <tfoot>
         <tr>
-            <td colspan="3">Pressão Máxima: 2,8 kg = (40psi) <br><span><i>Exemplo: 2,8 x 14,222 = (39,82) psi <br>39,82 <span id="dividir">&#247;</span> 14,222 = (2,8) kg</i></span></td>
-        </tr> 
+            <td colspan="3">
+                <!-- Exemplo de uso do fator de pressão -->
+                Pressão Máxima: 2,8 kg = (40psi) <br>
+                <span><i>Exemplo: 2,8 x 14,222 = (39,82) psi <br>39,82 <span id="dividir">&#247;</span> 14,222 = (2,8) kg</i></span>
+            </td>
+        </tr>
     </tfoot>
 </table>
+
+<!-- Tabela de fator do tanque -->
 <table class="tab2">
     <thead>
         <tr>
@@ -239,67 +261,98 @@
     </tbody>
     <tfoot>
         <tr>
-            <td colspan="3">Fator Tanque x Polegadas Descarga<br><span><i>Exemplo: 125 pol x 13,8400 = (1.730) m3<br> 1.730 m3 <span id="dividir">&#247;</span> 13,8400 = (125) pol</i></span></td>
+            <td colspan="3">
+                <!-- Exemplo de uso dos fatores do tanque -->
+                Fator Tanque x Polegadas Descarga<br>
+                <span>
+                    <i>
+                        Exemplo: 125 pol x 13,8400 = (1.730) m3<br>
+                        1.730 m3 <span id="dividir">&#247;</span> 13,8400 = (125) pol
+                    </i>
+                </span>
+            </td>
         </tr>
     </tfoot>
 </table>
 
+<!-- Calculadora de Conversão -->
 <div class="calculadora">
     <h2>Calculadora de Conversão</h2>
 
+    <!-- Campo para valor maior -->
     <label for="valor">maior:</label>
     <input type="text" id="valor" inputmode="numeric" enterkeyhint="go" placeholder="Ex: 125" style="margin-bottom:8px;">
 
+    <!-- Campo para valor menor -->
     <label for="fator">menor:</label>
     <input type="text" id="fator" inputmode="numeric" enterkeyhint="go" placeholder="Ex: 13,8400" style="margin-bottom:8px;">
 
+    <!-- Checkbox para escolher multiplicação ou divisão -->
     <label style="display:block;margin:10px 0;">
         <input type="checkbox" id="modo" checked>
         Multiplicar (Desmarque para Dividir) <br>
-        <span><i>Exemplo: 13,8400 x 125 pol = (1.730) m3<br> 1.730 m3 <span id="dividir">&#247;</span> 13,8400 = (125) pol</i></span>
+        <span>
+            <i>
+                Exemplo: 13,8400 x 125 pol = (1.730) m3<br>
+                1.730 m3 <span id="dividir">&#247;</span> 13,8400 = (125) pol
+            </i>
+        </span>
     </label>
 
+    <!-- Botão para acionar a conversão -->
     <button onclick="calcular()" style="margin-bottom:10px;">Converter</button>
+    <!-- Local onde o resultado será exibido -->
     <p id="resultado"></p>
-    </div>
+</div>
 
-    <script>
-    function calcular() {
-        const valorInput = document.getElementById("valor").value.replace(",", ".");
-        const fatorInput = document.getElementById("fator").value.replace(",", ".");
-        const valor = parseFloat(valorInput);
-        const fator = parseFloat(fatorInput);
-        const modoMultiplicar = document.getElementById("modo").checked;
+<script>
+// Função principal da calculadora
+function calcular() {
+    // Pega o valor digitado e troca vírgula por ponto para aceitar decimais
+    const valorInput = document.getElementById("valor").value.replace(",", ".");
+    const fatorInput = document.getElementById("fator").value.replace(",", ".");
+    // Converte os valores para número
+    const valor = parseFloat(valorInput);
+    const fator = parseFloat(fatorInput);
+    // Verifica se é multiplicação ou divisão
+    const modoMultiplicar = document.getElementById("modo").checked;
 
-        if (isNaN(valor) || isNaN(fator) || fator === 0) {
-            document.getElementById("resultado").innerText = "Por favor, insira valores válidos.";
-            return;
-        }
-
-        const resultado = modoMultiplicar ? valor * fator : valor / fator;
-        const operacao = modoMultiplicar ? "Multiplicado" : "Dividido";
-
-        const resultadoFormatado = resultado.toLocaleString('pt-BR', {
-            minimumFractionDigits: 0,
-            maximumFractionDigits: 4
-        });
-
-        document.getElementById("resultado").innerText = `Resultado (${operacao}): ${resultadoFormatado}`;
+    // Validação dos campos
+    if (isNaN(valor) || isNaN(fator) || fator === 0) {
+        document.getElementById("resultado").innerText = "Por favor, insira valores válidos.";
+        return;
     }
 
-    document.addEventListener('DOMContentLoaded', function () {
-        const valor = document.getElementById("valor");
-        const fator = document.getElementById("fator");
-        [valor, fator].forEach(function (input) {
-            input.addEventListener("keydown", function (e) {
-                if (e.key === "Enter") {
-                    calcular();
-                }
-            });
+    // Realiza o cálculo conforme o modo selecionado
+    const resultado = modoMultiplicar ? valor * fator : valor / fator;
+    const operacao = modoMultiplicar ? "Multiplicado" : "Dividido";
+
+    // Formata o resultado para o padrão brasileiro
+    const resultadoFormatado = resultado.toLocaleString('pt-BR', {
+        minimumFractionDigits: 0,
+        maximumFractionDigits: 4
+    });
+
+    // Exibe o resultado na tela
+    document.getElementById("resultado").innerText = `Resultado (${operacao}): ${resultadoFormatado}`;
+}
+
+// Adiciona evento para acionar a conversão ao pressionar Enter ou "Ir" no teclado
+document.addEventListener('DOMContentLoaded', function () {
+    const valor = document.getElementById("valor");
+    const fator = document.getElementById("fator");
+    [valor, fator].forEach(function (input) {
+        input.addEventListener("keydown", function (e) {
+            // Se pressionar Enter ou equivalente, chama a função calcular
+            if (e.key === "Enter") {
+                calcular();
+            }
         });
     });
+});
 </script>
 
+<!-- Tabela extra de locais e códigos -->
 <table class="tab1">
     <caption>Lista de Locais e Códigos</caption>    
     <thead>
@@ -311,12 +364,16 @@
             <th>Código</th>
         </tr>
     </thead>
-    
+    <!-- Aqui faltam os dados do corpo da tabela -->
+</table>
 
+<!-- Imagens das empresas -->
 <div style="text-align: center;">
     <img src="imagem/1.png" alt="white martins">
-<img src="imagem/2.png" alt="jsl">
+    <img src="imagem/2.png" alt="jsl">
 </div>
+
+<!-- Rodapé com crédito -->
 <footer>
     <p style="text-align: center; font-size: 0.8em; color: #666;">
         Desenvolvido por <a href="https://www.instagram.com/henryque.design/" target="_blank" class="footer-link">Henryque Design</a>
