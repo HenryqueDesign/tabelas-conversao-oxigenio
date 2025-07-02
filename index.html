@@ -161,6 +161,7 @@
        
         
         
+        
     </style>
 </head>
 <body>
@@ -247,60 +248,60 @@
     <h2>Calculadora de Conversão</h2>
 
     <label for="valor">maior:</label>
-    <input type="number" id="valor" placeholder="Ex: 125" style="margin-bottom:8px;">
+    <input type="number" id="valor" inputmode="decimal" step="any" placeholder="Ex: 125" style="margin-bottom:8px;">
 
     <label for="fator">menor:</label>
-    <input type="number" id="fator" placeholder="Ex: 13,8400" style="margin-bottom:8px;">
+    <input type="number" id="fator" inputmode="decimal" step="any" placeholder="Ex: 13,8400" style="margin-bottom:8px;">
 
     <label style="display:block;margin:10px 0;">
         <input type="checkbox" id="modo" checked>
-        Multiplicar (Desmarque para dividir) <br>
+        Multiplicar (Desmarque para Dividir) <br>
         <span><i>Exemplo: 13,8400 x 125 pol = (1.730) m3<br> 1.730 m3 <span id="dividir">&#247;</span> 13,8400 = (125) pol</i></span>
     </label>
 
     <button onclick="calcular()" style="margin-bottom:10px;">Converter</button>
-
     <p id="resultado"></p>
-</div>
+    </div>
 
-<script>
-function calcular() {
-    const valorInput = document.getElementById("valor").value.replace(",", ".");
-    const fatorInput = document.getElementById("fator").value.replace(",", ".");
-    const valor = parseFloat(valorInput);
-    const fator = parseFloat(fatorInput);
-    const modoMultiplicar = document.getElementById("modo").checked;
+    <script>
+    function calcular() {
+        const valorInput = document.getElementById("valor").value.replace(",", ".");
+        const fatorInput = document.getElementById("fator").value.replace(",", ".");
+        const valor = parseFloat(valorInput);
+        const fator = parseFloat(fatorInput);
+        const modoMultiplicar = document.getElementById("modo").checked;
 
-    if (isNaN(valor) || isNaN(fator) || fator === 0) {
-        document.getElementById("resultado").innerText = "Por favor, insira valores válidos.";
-        return;
+        if (isNaN(valor) || isNaN(fator) || fator === 0) {
+            document.getElementById("resultado").innerText = "Por favor, insira valores válidos.";
+            return;
+        }
+
+        const resultado = modoMultiplicar ? valor * fator : valor / fator;
+        const operacao = modoMultiplicar ? "Multiplicado" : "Dividido";
+
+        const resultadoFormatado = resultado.toLocaleString('pt-BR', {
+            minimumFractionDigits: 0,
+            maximumFractionDigits: 4
+        });
+
+        document.getElementById("resultado").innerText = `Resultado (${operacao}): ${resultadoFormatado}`;
     }
 
-    const resultado = modoMultiplicar ? valor * fator : valor / fator;
-    const operacao = modoMultiplicar ? "Multiplicado" : "Dividido";
-
-    const resultadoFormatado = resultado.toLocaleString('pt-BR', {
-        minimumFractionDigits: 0,
-        maximumFractionDigits: 4
-    });
-
-    document.getElementById("resultado").innerText = `Resultado (${operacao}): ${resultadoFormatado}`;
-}
-
-document.addEventListener('DOMContentLoaded', function () {
-    const valor = document.getElementById("valor");
-    const fator = document.getElementById("fator");
-    [valor, fator].forEach(function (input) {
-        input.addEventListener("keydown", function (e) {
-            if (e.key === "Enter") {
-                calcular();
-            }
+    document.addEventListener('DOMContentLoaded', function () {
+        const valor = document.getElementById("valor");
+        const fator = document.getElementById("fator");
+        [valor, fator].forEach(function (input) {
+            input.addEventListener("keydown", function (e) {
+                if (e.key === "Enter") {
+                    calcular();
+                }
+            });
         });
     });
-});
 </script>
 
-<table class="tab1" style="width:80%; margin: 20px auto;">
+<table class="tab1">
+    <caption>Lista de Locais e Códigos</caption>    
     <thead>
         <tr>
             <td colspan="2">Lista de Locais e Códigos</td>
@@ -310,28 +311,7 @@ document.addEventListener('DOMContentLoaded', function () {
             <th>Código</th>
         </tr>
     </thead>
-    <tbody>
-        <tr><td>IGUATAMA</td><td>Rba 595 Dlq 0671</td></tr>
-        <tr><td>IPATINGA USIMINAS</td><td>Rba 841 Dlq 8419</td></tr>
-        <tr><td>JACAREÍ</td><td>Rba 804</td></tr>
-        <tr><td>JECEABA</td><td>RBA 309 Dlq 0620</td></tr>
-        <tr><td>JOÃO MONLEVADE</td><td>Rba 745 Dlq 7455</td></tr>
-        <tr><td>JUIZ DE FORA</td><td>Rba 710 Dlq 7102</td></tr>
-        <tr><td>BARREIRO PL5</td><td>Rba 744 Dlq 0965</td></tr>
-        <tr><td>GOIÂNIA</td><td>Rba 333 Dlq 0388</td></tr>
-        <tr><td>CONTAGEM</td><td>Rba 307</td></tr>
-        <tr><td>MANAUS</td><td>Rba 363</td></tr>
-        <tr><td>DIVINÓPOLIS</td><td>Rba 707 Dlq 7072</td></tr>
-        <tr><td>ARAUCÁRIA CO2</td><td>Rba 551 Dlq 9016</td></tr>
-        <tr><td>OURO BRANCO</td><td>Rba 739 Dlq 7390</td></tr>
-        <tr><td>SANTA BÁRBARA</td><td>Rba 708 Dlq 7080</td></tr>
-        <tr><td>UBERLÂNDIA</td><td>RBA 447 Dlq</td></tr>
-        <tr><td>VITÓRIA CARIACICA</td><td>RBA 335 Dlq 3352</td></tr>
-        <tr><td>VOLTA REDONDA</td><td>Rba 746 Dlq 7463</td></tr>
-        <tr><td>CST VITÓRIA</td><td>Rba 395 Dlq 0086</td></tr>
-        <tr><td>BRASÍLIA</td><td>Rba 304 Dlq 2304</td></tr>
-    </tbody>
-</table>
+    
 
 <div style="text-align: center;">
     <img src="imagem/1.png" alt="white martins">
